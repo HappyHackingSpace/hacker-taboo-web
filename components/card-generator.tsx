@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
 import { Printer, RefreshCw } from "lucide-react"
 import { CardPreview } from "@/components/card-preview"
+import { SuggestCardDialog } from "@/components/suggest-card-dialog"
 import { fetchCardData } from "@/lib/fetch-card-data"
 
 type CardData = {
@@ -333,6 +334,7 @@ export function CardGenerator() {
                 <Printer className="mr-2 h-4 w-4" />
                 Print Cards
               </Button>
+              <SuggestCardDialog />
             </div>
           </CardContent>
         </Card>
