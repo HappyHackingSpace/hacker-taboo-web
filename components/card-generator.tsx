@@ -96,6 +96,17 @@ export function CardGenerator() {
     generateRandomCards(filteredCards, cardCount)
   }
 
+  // The slider can never offer more cards than the current filters provide.
+  // Before data loads (empty pool) keep the default range so the initial
+  // card count is not clamped prematurely.
+  const maxCardCount = filteredCards.length > 0 ? Math.min(filteredCards.length, 20) : 20
+
+  useEffect(() => {
+    if (cardCount > maxCardCount) {
+      setCardCount(maxCardCount)
+    }
+  }, [cardCount, maxCardCount])
+
   const handlePrint = () => {
     // Create a print-specific stylesheet
     const printStyle = `
@@ -315,12 +326,18 @@ export function CardGenerator() {
                 <Slider
                   id="card-count"
                   min={1}
-                  max={20}
+                  max={maxCardCount}
                   step={1}
                   value={[cardCount]}
                   onValueChange={(value) => setCardCount(value[0])}
                   className="py-4"
                 />
+                {!isLoading && filteredCards.length > 0 && filteredCards.length < 20 && (
+                  <p className="text-xs text-muted-foreground">
+                    {filteredCards.length} card{filteredCards.length === 1 ? "" : "s"} available with the current
+                    filters
+                  </p>
+                )}
               </div>
             </div>
 
