@@ -35,6 +35,11 @@ export function CardPreview({ card }: CardProps) {
             <p className="text-xs text-muted-foreground italic">{card.description}</p>
           </div>
         )}
+        <div className="flex items-center justify-center gap-1.5 pt-3 border-t border-border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hhs-logo.png" alt="Happy Hacking Space logo" className="h-4 w-4 rounded-sm" />
+          <span className="text-[10px] text-muted-foreground">Happy Hacking Space</span>
+        </div>
       </div>
     </div>
   )

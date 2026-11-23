@@ -169,6 +169,24 @@ export function CardGenerator() {
         font-style: italic;
         color: #666;
       }
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid #ddd;
+      }
+      .card-footer img {
+        height: 16px;
+        width: 16px;
+        border-radius: 2px;
+      }
+      .card-footer span {
+        font-size: 10px;
+        color: #666;
+      }
     `
 
     // Generate HTML for each card
@@ -203,6 +221,10 @@ export function CardGenerator() {
           `
               : ""
           }
+          <div class="card-footer">
+            <img src="${window.location.origin}/hhs-logo.png" alt="Happy Hacking Space logo" />
+            <span>Happy Hacking Space</span>
+          </div>
         </div>
       </div>
     `,
